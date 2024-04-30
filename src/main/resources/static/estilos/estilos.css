@@ -1,0 +1,442 @@
+/* ESTILOS GENERALES */
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+/* ESTILOS DEL LOGO */
+.img_logo {
+	display: flex;
+	justify-content: center;
+}
+
+/* ESTILOS DE LA ELECCION ENTRE JORNADA Y PRODUCCION */
+
+.usuario {
+	width: 100%;
+	position: fixed;
+	top: 40%;
+	text-align: center;
+	transition: all .5s;
+}
+
+.boton_jornadaproduccion {
+	display: grid;
+	justify-content: center;
+}
+
+.boton_jornadaproduccion div {
+	font-size: 3vh;
+	background-color: white;
+	padding: 1.5vh;
+	margin-bottom: 2vh;
+	border: #3EA110 2px solid;
+	border-radius: 7px;
+	text-align: center;
+}
+
+.boton_usuario {
+	float: right;
+	line-height: 80px;
+	cursor: pointer;
+	display: none;
+}
+
+/* MOSTRAR LA SECCION DE FORMULARIO PARA REGISTRO DE JORNADA */
+
+.mostrar_reg_jornada {
+	position: fixed;
+	width: 100%;
+	background-color: white;
+	z-index: 1;
+	transition: all .5s;
+	text-align: center;
+	left: 0;
+	top: 3%;
+}
+
+/* MOSTRAR LA SECCION DE FORMULARIO PARA ENTRAR A REGISTRAR PRODUCCION */
+
+.mostrar_reg_produccion {
+	position: fixed;
+	width: 100%;
+	background-color: white;
+	z-index: 1;
+	transition: all .5s;
+	text-align: center;
+	right: 0;
+}
+
+/* MOSTRAR LA SECCION DE FORMULARIO PARA ENTRAR A ADMINISTRACION */
+
+.mostrar_reg_administracion {
+	position: fixed;
+	width: 100%;
+	background-color: white;
+	z-index: 1;
+	transition: all .5s;
+	text-align: center;
+	top: 35%;
+}
+
+/* OCULTAR LA SECCION PRINCIPAL DE ELECCION */
+
+.ocultar_formulario_usuario {
+	position: fixed;
+	width: 100%;
+	z-index: 1;
+	display: none;
+}
+
+/* ESTILOS GENERALES DEL BOTON ATRAS */
+
+.atras {
+	position: fixed;
+	width: 100%;
+	bottom: -100%;
+	background-color: green;
+	border-top: white 10px solid;
+	z-index: 1;
+	padding: 3vh 0;
+	text-align: center;
+	color: white;
+	font-size: 4vh;
+	transition: all .5s;
+}
+
+/* MOSTRAR EL BOTON ATRAS */
+
+.mostrarAtras {
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	background-color: green;
+	padding: 3vh 0;
+	text-align: center;
+	color: white;
+	font-size: 4vh;
+	transition: all .5s;
+}
+
+/* ESTILOS DE FORMULARIO REGISTRO DE JORNADA */
+
+.registro_jornada {
+	position: fixed;
+	left: -100%;
+	top: 3%;
+	background-color: white;
+	z-index: 1;
+	transition: all .5s;
+}
+
+#form_jornada {
+	width: 90%;
+	display: inline-grid;
+	text-align: center;
+}
+
+.jor_horaentrada,
+.jor_horasalida,
+.jor_fecha {
+	text-align: center;
+	font-size: 2.5vh;
+	font-weight: bold;
+	padding: 0.5vh;
+	margin-bottom: 2.5vh;
+	border-radius: 7px;
+}
+
+.registrarJornada,
+.registrarProduccion, 
+.accederAdministracion {
+	background-color: green;
+	padding: 2vh 0;
+	margin-top: 2vh;
+	text-align: center;
+	color: white;
+	font-size: 3vh;
+	border: none;
+	border-radius: 7px;
+}
+
+/* ESTILOS DE FORMULARIO REGISTRO DE PRODUCCION */
+
+.registro_produccion {
+	position: fixed;
+	right: -100%;
+	top: 40%;
+	background-color: white;
+	z-index: 1;
+	transition: all .5s;
+}
+
+#form_login {
+	width: 90%;
+	display: inline-grid;
+	text-align: center;
+	border-radius: 7px;
+}
+
+.datos_label {
+	font-size: 3vh;
+	font-weight: bold;
+	margin-bottom: 2vh;
+	color: #3EA110;
+}
+
+.error {
+	color: red;
+	font-weight: bold;
+	text-align: center;
+}
+
+/* ESTILOS DE FORMULARIO DE ACCESO DE ADMINISTRADOR */
+
+.formularioAdministracion {
+	width: 100%;
+	position: fixed;
+	top: -100%;
+	background-color: white;
+	z-index: 1;
+	text-align: center;
+	transition: all .5s;
+}
+
+#formAdministracion {
+	width: 90%;
+	display: inline-grid;
+	text-align: center;
+}
+
+.usuarioAdmin, .passwordAdmin {
+	font-size: 2.5vh;
+	font-weight: bold;
+	padding: 0.5vh;
+	text-align: center;
+	margin-bottom: 2vh;
+	border-radius: 7px;
+}
+
+/* ESTILOS DEL PANEL DE REGISTRO DE PRODUCCION */
+
+.informacion {
+	background-color: #e53935;
+	height: 3.5em;
+	width: 100%;
+	position: fixed;
+	top: 0;
+}
+
+.informacion p {
+	margin: 0;
+	color: white;
+	font-weight: bold;
+	font-size: 1.5em;
+	padding: 0.5em 0 0 0.5em;
+}
+
+.datos_matricula {
+	margin: 3em auto;
+	padding: 1.5em 0 5em 0;
+	width: 80%;
+}
+
+.cabeceraMatricula,
+.cabeceraInput {
+	width: 100%;
+	display: inline-block;
+	font-size: 1.5em;
+	color: #5d5d5d;
+}
+
+.matricula {
+	font-weight: bold;
+	font-size: 2em;
+	margin: 0.5em 0;
+	width: 100%;
+	padding: 0.2em 0 0.2em 0.5em;
+	border-color: #5d5d5d;
+	border-radius: 5px;
+}
+
+.operacion {
+	font-weight: bold;
+	font-size: 1em;
+	margin: 0.5em 0;
+	width: 100%;
+	padding: 0.5em 0 0.5em 0.5em;
+	border-color: #5d5d5d;
+	border-radius: 5px;
+}
+
+.observaciones {
+	font-weight: bold;
+	font-size: 1em;
+	margin: 0.5em 0;
+	width: 100%;
+	padding: 0.5em 0 0.5em 0.5em;
+	border-color: #5d5d5d;
+	border-radius: 5px;
+}
+
+.tipoOperacion {
+	margin: 1em 0;
+}
+
+.interior,
+.exterior,
+.completo,
+.ozono {
+	display: flex;
+	align-items: center;
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+
+.interior input {
+	opacity: 0;
+	position: absolute;
+}
+
+.exterior input {
+	opacity: 0;
+	position: absolute;
+}
+
+.completo input {
+	opacity: 0;
+	position: absolute;
+}
+
+.ozono input {
+	opacity: 0;
+	position: absolute;
+}
+
+.checkmark {
+	width: 50%;
+	height: 3em;
+	background-color: #eee;
+	border: 5px solid #ccc;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.not-selected {
+	background-color: #eee;
+}
+
+.interior input:checked + .checkmark {
+	background-color: #e53935;
+}
+
+.exterior input:checked + .checkmark {
+	background-color: #e53935;
+}
+
+.completo input:checked + .checkmark {
+	background-color: #e53935;
+}
+
+.ozono input:checked + .checkmark {
+	background-color: #e53935;
+}
+
+.registrarOperacion {
+	font-weight: bold;
+	color: white;
+	font-size: 1.5em;
+	width: 100%;
+	padding: 0.5em 0 0.5em 0.5em;
+	margin-top: 0.5em;
+	background-color: #e53935;
+	border-radius: 5px;
+	border: 0 white;
+}
+
+.acciones {
+	background-color: #e53935;
+	height: 3.5em;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+}
+
+.acciones div {
+	margin: 0 auto;
+	width: fit-content;
+}
+
+.acciones a {
+	display: inline-block;
+	text-decoration: none;
+	font-weight: bold;
+	color: white;
+	padding: 0.9em 1.4em 1em;
+}
+
+/* ESTILOS DEL PANEL DE VISUALIZACION DE PRODUCCION */
+
+.produccionSeccion {
+	margin: 4em 1em 4.5em 1em;
+    font-weight: bold;
+}
+
+.produccionSeccion table {
+	width: 100%;
+}
+
+.matriculaProduccion {
+	font-weight: bold;
+    font-size: 1.2em;
+}
+
+.produccionSeccion a {
+	width: 100%;
+    float: left;
+    font-weight: bold;
+    margin-top: 0.5em;
+    padding: 0.5em 0 0.5em 0;
+    color: white;
+    text-decoration: none;
+    background-color: #e53935;
+    text-align: center;
+}
+
+/* ESTILOS DEL PANEL DE VISUALIZACION DE PRODUCCION PARA ADMINISTRADOR */
+
+.informacionPanelAdmin {
+	padding: 0.5em;
+	background-color: #e53935;
+	height: fit-content;
+	width: 100%;
+	position: fixed;
+	top: 0;
+}
+
+.informacionPanelAdmin p {
+	margin: 0;
+	color: white;
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+.datoPanel {
+	font-size: 1em !important;
+}
+
+.administrador {
+	margin: 0;
+	font-weight: bold;
+	font-size: 1.2em;
+	padding: 0.5em 0 0 0.5em;
+}
+
+.produccionSeccion {
+	margin: 6em 1em 4.5em 1em;
+    font-weight: bold;
+}

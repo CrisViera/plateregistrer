@@ -1,0 +1,85 @@
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script th:src="@{js/accionesProduccion.js}"></script>
+	<link rel="stylesheet" th:href="@{estilos/estilos.css}">
+	<title th:text="${titulo}"></title>
+</head>
+
+<body>
+
+
+	<div class="informacion">
+		<p>Récord Go | Operaciones</p>
+	</div>
+
+
+	<div class="datos_matricula">
+
+		<form method="post" th:action="@{/registroOperacion}">
+
+			<span class="cabeceraMatricula">Matricula</span>
+			<input type="text" class="matricula" name="matricula" id="matricula" th:value="${matricula}">
+			<p class="error" th:if="${param.errorMatricula}">Indique una matrícula correcta</p>
+			<div class="operaciones">
+
+				<label><span class="cabeceraInput">Operario</span>
+					<input type="text" class="operacion" th:value="${nombre}" readonly>
+				</label>
+
+				<div class="tipoOperacion">
+					<label class="interior" for="interior">
+						<span class="cabeceraInput">Interior</span>
+						<input type="checkbox" name="interior" id="interior">
+						<span class="checkmark" id="checkmarkInterior">✔</span>
+						<p class="error" th:if="${param.errorOperacion}">Indique al menos una operación</p>
+					</label>
+					<label class="exterior" for="exterior">
+						<span class="cabeceraInput">Exterior</span>
+						<input type="checkbox" name="exterior" id="exterior">
+						<span class="checkmark" id="checkmarkExterior">✔</span>
+						<p class="error" th:if="${param.errorOperacion}">Indique al menos una operación</p>
+					</label>
+					<label class="completo" for="completo">
+						<span class="cabeceraInput">Completo</span>
+						<input type="checkbox" name="completo" id="completo">
+						<span class="checkmark" id="checkmarkCompleto">✔</span>
+						<p class="error" th:if="${param.errorOperacion}">Indique al menos una operación</p>
+					</label>
+					<label class="ozono" for="ozono">
+						<span class="cabeceraInput">Ozono</span>
+						<input type="checkbox" name="ozono" id="ozono">
+						<span class="checkmark">✔</span>
+						<p class="error" th:if="${param.errorOperacion}">Indique al menos una operación</p>
+					</label>
+					<p class="error" th:if="${param.operacionInvalida}">Operación inválida</p>
+				</div>
+				<label for="repostaje"><span class="cabeceraInput">Repostaje</span>
+					<input type="text" class="operacion" name="repostaje" id="repostaje"
+						placeholder="Introduzca cantidad...">
+				</label>
+				<span class="cabeceraInput">Observaciones</span>
+				<textarea name="observaciones" class="observaciones" id="observaciones"
+					placeholder="Observaciones..."></textarea>
+
+				<input type="submit" class="registrarOperacion" id="registrarOperacion" value="Registrar operación">
+			</div>
+
+		</form>
+
+	</div>
+
+	<div class="acciones">
+		<div>
+			<a th:href="@{/sincronizar}">Sincronizar</a>
+			<a th:href="@{/produccion}">Producción</a>
+			<a th:href="@{/}">Salir</a>
+		</div>
+	</div>
+
+</body>
+
+</html>

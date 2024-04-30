@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" th:href="@{estilos/estilos.css}">
+    <title th:text="${titulo}"></title>
+</head>
+<body>
+<div class="login">
+
+	<div class="img_logo" id="img_logo">
+
+        <a th:href=@{/}><img th:src="@{img/logo.png}" alt="logo" class="logo" id="logo" ></a>
+
+    </div>
+    
+    <div class="usuario" id="usuario">
+
+	    <div class="boton_jornadaproduccion">
+	
+			<!-- Vista principal de elección -->
+	        <div>
+	
+	            <input type="checkbox" class="boton_usuario" id="jornada">
+	            
+	            <label for="jornada"><p>Registro de jornada</p></label>
+	
+	        </div>
+	
+	        <div>
+	
+	            <input type="checkbox" class="boton_usuario" id="produccion">
+	
+	            <label for="produccion">Registro de producción</label>
+	
+	        </div>
+	        
+	        <div>
+	
+	            <input type="checkbox" class="boton_usuario" id="administracion">
+	
+	            <label for="administracion">Administración</label>
+	
+	        </div>
+	
+	    </div>
+		<p class="error" th:if="${param.errorUsuario}">Usuario no encontrado</p>
+	</div>
+	
+	<!-- Vista de registro de jornada -->
+    <script>
+	    $(document).ready(function () {
+	        // Captura el evento de envío del formulario
+	        $("#form_jornada").submit(function (e) {
+	            e.preventDefault(); // Evita el envío estándar del formulario
+	
+	            // AVERIGUAMOS LA FECHA ACTUAL
+	
+	            let date = new Date();
+	            let year = date.getFullYear();
+	            let mes = date.getMonth() + 1;
+	            let dia = date.getDate();
+	            
+	            // SEPARAMOS LA FECHA INTRODUCIDA
+	            let dni = document.getElementById("dni").value;
+	            let fechaForm = document.getElementById("fecha").value;
+	            let horaEntrada = document.getElementById("hora_entrada").value;
+	            let horaSalida = document.getElementById("hora_salida").value;
+	            let yearForm = fechaForm.slice(0, 4);
+	            let mesForm = fechaForm.slice(5, 7);
+	            let diaForm = fechaForm.slice(8, 10);
+	            /*
+	            // COMPARAMOS LAS HORAS
+	
+	            let horaEntradaForm = document.getElementById("hora_entrada").value.split(":");
+	            let horaSalidaForm = document.getElementById("hora_salida").value.split(":");
+	            let hora_entrada = new Date();
+	            let hora_Salida = new Date();
+	
+	            hora_entrada.setHours(horaEntradaForm[0], horaEntradaForm[1]);
+	            hora_salida.setHours(horaSalidaForm[0], horaSalidaForm[1]);
+	
+	            // COMPROBAR SI SE HA INTRODUCIDO UNA HORA SUPERIOR
+	
+	            if(hora_entrada > hora_Salida){
+	                alert("La hora de entrada no puede ser superior a la hora de salida");
+	                document.getElementById("hora_entrada").style.borderColor = "red";
+	            }else if(hora_Salida < hora_entrada){
+	                alert("La hora de salida no puede ser inferior a la hora de entrada");
+	                document.getElementById("hora_entrada").style.borderColor = "red";
+	            }else{
+	
+	                document.getElementById("hora_entrada").style.borderColor = "green";
+	            }
+	            */
+	
+	            // COMPROBAMOS QUE LOS CAMPOS NO ESTÁN VACIOS
+	            if(dni == "" || fecha == "" || horaEntrada == "" || horaSalida == ""){
+	
+	                alert("Rellene todos los campos");
+	
+	            }else{
+	                // COMPROBAMOS EL AÑO (SUPERIOR E INFERIOR)
+	                if (yearForm > year || yearForm < year) {
+	
+	                alert("El año debe ser el actual, la fecha actual es " + dia + "-" + mes + "-" + year);
+	                document.getElementById("fecha").style.borderColor = "red";
+	                
+	                // COMPROBAMOS EL MES (SUPERIOR E INFERIOR)
+	            } else if (mesForm > mes || mesForm < mes) {
+	
+	                alert("El mes debe ser el actual, la fecha actual es " + dia + "-" + mes + "-" + year);
+	                document.getElementById("fecha").style.borderColor = "red";
+	
+	                // COMPROBAMOS EL DIA (SUPERIOR E INFERIOR)
+	            } else if (diaForm > dia || diaForm < dia) {
+	
+	                alert("El día debe ser el actual, la fecha actual es " + dia + "-" + mes + "-" + year);
+	                document.getElementById("fecha").style.borderColor = "red";
+	                
+	               // SI TODO ESTÁ CORRECTO, ENVIAMOS EL FORMULARIO Y REGISTRAMOS JORNADA 
+	            }else{
+	
+	                document.getElementById("fecha").style.borderColor = "green";
+	
+	                // Serializa los datos del formulario
+	                var formData = $(this).serialize();
+	
+	                // Envía los datos al servidor utilizando AJAX
+	                $.ajax({
+	                    type: "POST", // O GET según tu necesidad
+	                    url: "./capas/registroJornada.php", // El archivo PHP que procesará el formulario
+	                    data: formData,
+	                    success: function (response) {
+	                        // Procesa la respuesta del servidor aquí
+	                        // Puedes mostrar un mensaje de éxito o realizar otras acciones necesarias
+	                        alert("Registro de jornada exitoso: " + response);
+	                    },
+	                    error: function (xhr, status, error) {
+	                        // Maneja los errores aquí
+	                        alert("Error en el registro: " + error);
+	                    }
+	                });
+	            }
+	            }
+	            
+	          
+	        });
+	    });
+	</script>
+	
+	<div class="registro_jornada" id="reg_jornada">
+	
+	    <form class="login" id="form_jornada" method="post">
+	
+	        <label for="dni" class="datos_label">DNI del operario</label>
+	
+	        <input type="text" name="dni" id="dni" class="dni">
+	
+	        <label for="fecha" class="datos_label">Fecha</label>
+	
+	        <input type="date" class="jor_fecha" name="fecha" id="fecha">
+	
+	        <label for="hora" class="datos_label">Hora de entrada</label>
+	
+	        <input type="time" min="07:00" class="jor_horaentrada" name="hora_entrada" id="hora_entrada">
+	
+	        <label for="hora" class="datos_label">Hora de salida</label>
+	
+	        <input type="time" min="07:00" class="jor_horasalida" name="hora_salida" id="hora_salida">
+	
+	        <input type="submit" value="Registrar jornada" class="registrarJornada" id="registroJornada">
+	
+	    </form>
+	</div>
+	
+	<!-- Formulario de elección de centro de trabajo-->
+    <div class="registro_produccion" id="login_produccion">
+
+	    <form class="login" id="form_login" method="post" th:action="@{/inicioSesion}">
+	
+	        <label for="dni" class="datos_label">DNI del operario</label>
+	
+	            <input type="text" name="dni" id="" class="dni">
+	
+	        <label for="isla" class="datos_label">Isla</label>
+	
+	        <select name="isla" id="isla" class="isla">
+	
+	            <option value="grancanaria">Gran Canaria</option>
+	
+	        </select>
+	
+	        <label for="empresa" class="datos_label">Centro de trabajo</label>
+	
+	        <select name="empresa" id="empresa" class="empresa">
+	
+	            <option th:each="centroDeTrabajo : ${centrosDeTrabajo}" th:value="${centroDeTrabajo.codigo}" th:text="${centroDeTrabajo.centroDeTrabajo}"></option>
+	
+	        </select>
+	
+	        <input type="submit" value="Ingresar a producción" class="registrarProduccion" id="entrarProduccion">
+			
+	    </form>
+	
+	</div>    
+
+	<!-- Formulario de acceso de administradores-->
+    <div class="formularioAdministracion" id="login_administracion">
+
+	    <form class="loginAdministracion" id="formAdministracion" method="post" th:action="@{/administracion}">
+	
+	        <label for="usuario" class="datos_label">Usuario</label>
+	
+	            <input type="text" name="usuario" id="usuario" class="usuarioAdmin" required>
+	
+	        <label for="password" class="datos_label">Contraseña</label>
+	
+	            <input type="password" name="password" id="password" class="passwordAdmin" required>
+	
+	        <input type="submit" value="Acceder" class="accederAdministracion" id="accederAdministracion">
+
+	    </form>
+	
+	</div>    
+<div class="atras" id="atras">
+
+    <p>Volver</p>
+
+</div>
+
+<script src="./js/efectosInicio.js"></script>
+
+</body>
+</html>
+

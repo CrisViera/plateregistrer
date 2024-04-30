@@ -1,0 +1,127 @@
+<!-- FORMULARIO DE REGISTRO DE JORNADA -->
+
+<script>
+    $(document).ready(function () {
+        // Captura el evento de envío del formulario
+        $("#form_jornada").submit(function (e) {
+            e.preventDefault(); // Evita el envío estándar del formulario
+
+            // AVERIGUAMOS LA FECHA ACTUAL
+
+            let date = new Date();
+            let year = date.getFullYear();
+            let mes = date.getMonth() + 1;
+            let dia = date.getDate();
+            
+            // SEPARAMOS LA FECHA INTRODUCIDA
+            let dni = document.getElementById("dni").value;
+            let fechaForm = document.getElementById("fecha").value;
+            let horaEntrada = document.getElementById("hora_entrada").value;
+            let horaSalida = document.getElementById("hora_salida").value;
+            let yearForm = fechaForm.slice(0, 4);
+            let mesForm = fechaForm.slice(5, 7);
+            let diaForm = fechaForm.slice(8, 10);
+            /*
+            // COMPARAMOS LAS HORAS
+
+            let horaEntradaForm = document.getElementById("hora_entrada").value.split(":");
+            let horaSalidaForm = document.getElementById("hora_salida").value.split(":");
+            let hora_entrada = new Date();
+            let hora_Salida = new Date();
+
+            hora_entrada.setHours(horaEntradaForm[0], horaEntradaForm[1]);
+            hora_salida.setHours(horaSalidaForm[0], horaSalidaForm[1]);
+
+            // COMPROBAR SI SE HA INTRODUCIDO UNA HORA SUPERIOR
+
+            if(hora_entrada > hora_Salida){
+                alert("La hora de entrada no puede ser superior a la hora de salida");
+                document.getElementById("hora_entrada").style.borderColor = "red";
+            }else if(hora_Salida < hora_entrada){
+                alert("La hora de salida no puede ser inferior a la hora de entrada");
+                document.getElementById("hora_entrada").style.borderColor = "red";
+            }else{
+
+                document.getElementById("hora_entrada").style.borderColor = "green";
+            }
+            */
+
+            // COMPROBAMOS QUE LOS CAMPOS NO ESTÁN VACIOS
+            if(dni == "" || fecha == "" || horaEntrada == "" || horaSalida == ""){
+
+                alert("Rellene todos los campos");
+
+            }else{
+                // COMPROBAMOS EL AÑO (SUPERIOR E INFERIOR)
+                if (yearForm > year || yearForm < year) {
+
+                alert("El año debe ser el actual, la fecha actual es " + dia + "-" + mes + "-" + year);
+                document.getElementById("fecha").style.borderColor = "red";
+                
+                // COMPROBAMOS EL MES (SUPERIOR E INFERIOR)
+            } else if (mesForm > mes || mesForm < mes) {
+
+                alert("El mes debe ser el actual, la fecha actual es " + dia + "-" + mes + "-" + year);
+                document.getElementById("fecha").style.borderColor = "red";
+
+                // COMPROBAMOS EL DIA (SUPERIOR E INFERIOR)
+            } else if (diaForm > dia || diaForm < dia) {
+
+                alert("El día debe ser el actual, la fecha actual es " + dia + "-" + mes + "-" + year);
+                document.getElementById("fecha").style.borderColor = "red";
+                
+               // SI TODO ESTÁ CORRECTO, ENVIAMOS EL FORMULARIO Y REGISTRAMOS JORNADA 
+            }else{
+
+                document.getElementById("fecha").style.borderColor = "green";
+
+                // Serializa los datos del formulario
+                var formData = $(this).serialize();
+
+                // Envía los datos al servidor utilizando AJAX
+                $.ajax({
+                    type: "POST", // O GET según tu necesidad
+                    url: "./capas/registroJornada.php", // El archivo PHP que procesará el formulario
+                    data: formData,
+                    success: function (response) {
+                        // Procesa la respuesta del servidor aquí
+                        // Puedes mostrar un mensaje de éxito o realizar otras acciones necesarias
+                        alert("Registro de jornada exitoso: " + response);
+                    },
+                    error: function (xhr, status, error) {
+                        // Maneja los errores aquí
+                        alert("Error en el registro: " + error);
+                    }
+                });
+            }
+            }
+            
+          
+        });
+    });
+</script>
+
+<div class="registro_jornada" id="reg_jornada">
+
+    <form class="login" id="form_jornada" method="post">
+
+        <label for="dni" class="datos_label">DNI del operario</label>
+
+        <input type="text" name="dni" id="dni" class="dni">
+
+        <label for="fecha" class="datos_label">Fecha</label>
+
+        <input type="date" class="jor_fecha" name="fecha" id="fecha">
+
+        <label for="hora" class="datos_label">Hora de entrada</label>
+
+        <input type="time" min="07:00" class="jor_horaentrada" name="hora_entrada" id="hora_entrada">
+
+        <label for="hora" class="datos_label">Hora de salida</label>
+
+        <input type="time" min="07:00" class="jor_horasalida" name="hora_salida" id="hora_salida">
+
+        <input type="submit" value="Registrar jornada" class="registrarJornada" id="registroJornada">
+
+    </form>
+</div>

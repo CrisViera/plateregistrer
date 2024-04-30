@@ -1,0 +1,51 @@
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script th:src="@{js/accionesProduccion.js}"></script>
+	<link rel="stylesheet" th:href="@{estilos/estilos.css}">
+	<title th:text="${titulo}"></title>
+</head>
+
+<body>
+
+
+	<div class="informacionPanelAdmin">
+		<p>Récord Go | Producción</p>
+		<p class="datoPanel" th:text="${fechaActual}"></p>
+	</div>
+
+	<div class="produccionSeccion">
+		<table class="produccion" id="produccion">
+			<tbody>
+				<!-- Iterar sobre los listaOperaciones -->
+				<tr th:each="operacion : ${listaOperaciones}">
+					<td>
+						<p class="matriculaProduccion" th:text="${operacion.matricula}"></p>
+						<p th:if="${operacion.interior != 0}">Limpieza interior</p>
+						<p th:if="${operacion.exterior != 0}">Limpieza exterior</p>
+						<p th:if="${operacion.completo != 0}">Limpieza completa</p>
+						<p class="datoMatricula" th:if="${operacion.ozono != 0}">Tratamiento de ozono</p>
+						<p class="datoMatricula" th:if="${operacion.repostaje != 0.0}" th:text="'Repostado: ' + ${operacion.repostaje}">
+						</p>
+						<p class="datoMatricula" th:if="${operacion.observaciones != ''}"
+							th:text="'Observaciones: ' + ${operacion.observaciones}"></p>
+					</td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="acciones">
+		<div>
+			<a th:href="@{/panelAdministracion}">Sincronizar</a>
+			<a th:href="@{/}">Salir</a>
+		</div>
+	</div>
+
+</body>
+
+</html>
