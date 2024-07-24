@@ -71,6 +71,7 @@
 
 .mostrar_reg_produccion input {
 	padding: 0.5em 0;
+	text-align: center;
 }
 
 /* MOSTRAR LA SECCION DE FORMULARIO PARA ENTRAR A ADMINISTRACION */
