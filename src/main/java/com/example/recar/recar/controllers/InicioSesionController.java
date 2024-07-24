@@ -28,8 +28,6 @@ public class InicioSesionController {
 	@PostMapping("/inicioSesion")
 	public String inicioSesion(
 			@RequestParam("dni") String dni, 
-			@RequestParam("isla") String isla,
-			@RequestParam("empresa") String cod_empresa,
 			MySqlConnection operarios,
 			HttpSession session,
 			Model model) {
@@ -57,7 +55,6 @@ public class InicioSesionController {
 		            Operacion datosOperacion = new Operacion();
 		            datosOperacion.setDni(trabajador.getDni());
 		            datosOperacion.setNombre(trabajador.getNombre());
-		            datosOperacion.setCodigo(cod_empresa);
 		            session.setAttribute("operacion", datosOperacion);
 		        }
 		    }
