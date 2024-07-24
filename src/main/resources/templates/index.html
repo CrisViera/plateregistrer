@@ -36,7 +36,7 @@
 	            <label for="produccion">Registro de producción</label>
 	
 	        </div>
-	        
+	        <!--
 	        <div>
 	
 	            <input type="checkbox" class="boton_usuario" id="administracion">
@@ -44,7 +44,7 @@
 	            <label for="administracion">Administración</label>
 	
 	        </div>
-	
+			-->
 	    </div>
 		<p class="error" th:if="${param.errorUsuario}">Usuario no encontrado</p>
 	</div>
@@ -184,22 +184,6 @@
 	        <label for="dni" class="datos_label">DNI del operario</label>
 	
 	            <input type="text" name="dni" id="" class="dni">
-	
-	        <label for="isla" class="datos_label">Isla</label>
-	
-	        <select name="isla" id="isla" class="isla">
-	
-	            <option value="grancanaria">Gran Canaria</option>
-	
-	        </select>
-	
-	        <label for="empresa" class="datos_label">Centro de trabajo</label>
-	
-	        <select name="empresa" id="empresa" class="empresa">
-	
-	            <option th:each="centroDeTrabajo : ${centrosDeTrabajo}" th:value="${centroDeTrabajo.codigo}" th:text="${centroDeTrabajo.centroDeTrabajo}"></option>
-	
-	        </select>
 	
 	        <input type="submit" value="Ingresar a producción" class="registrarProduccion" id="entrarProduccion">
 			
