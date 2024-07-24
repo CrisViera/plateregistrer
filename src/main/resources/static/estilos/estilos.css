@@ -69,6 +69,10 @@
 	right: 0;
 }
 
+.mostrar_reg_produccion input {
+	padding: 0.5em 0;
+}
+
 /* MOSTRAR LA SECCION DE FORMULARIO PARA ENTRAR A ADMINISTRACION */
 
 .mostrar_reg_administracion {
@@ -139,7 +143,8 @@
 
 .jor_horaentrada,
 .jor_horasalida,
-.jor_fecha {
+.jor_fecha,
+.dni {
 	text-align: center;
 	font-size: 2.5vh;
 	font-weight: bold;
