@@ -83,24 +83,6 @@
 
                 <input type="text" name="dni" id="" class="dni">
 
-            <label for="isla" class="datos_label">Isla</label>
-
-            <select name="isla" id="" class="isla">
-
-                <option value="grancanaria">Gran Canaria</option>
-
-            </select>
-
-            <label for="empresa" class="datos_label">Centro de trabajo</label>
-
-            <select name="empresa" id="" class="empresa">
-
-                <option value="sixtAP">Sixt Aeropuerto</option>
-                <option value="sixtMEL">Sixt Meloneras</option>
-                <option value="avis">Avis</option>
-
-            </select>
-
             <input type="submit" value="Ingresar a producción" class="registrarProduccion">
             <p class="error" th:if="${error}" th:text="${error}"></p>
         </form>

@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		registroProduccion.classList.add("mostrar_reg_produccion");
 		registroProduccion.classList.remove("registro_produccion");
 	})
-	
+	/*
 	// Mostrar el formulario para la administración
 		
 	inputAdministrador.addEventListener("click", () => {
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		registroAdministracion.classList.add("mostrar_reg_administracion");
 		registroAdministracion.classList.remove("formularioAdministracion");
 	})
-
+	*/
 	// Condiciones para mostrar el boton de "Volver"
 
 	botonAtras.addEventListener("click", () => {
