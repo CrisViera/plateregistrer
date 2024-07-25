@@ -191,6 +191,15 @@
 	color: #e53935;
 }
 
+.infoIngreso {
+	font-size: 2vh;
+	font-weight: bold;
+	text-align: center;
+	padding: 0 1vh;
+	margin-top: 3vh;
+	color: #e53935;
+}
+
 .error {
 	color: red;
 	font-weight: bold;
@@ -459,6 +468,7 @@
 
 	.dni {
 		margin: 2.5vh 0;
+		font-size: 3vh;
 	}
 
 }
