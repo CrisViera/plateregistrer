@@ -1,4 +1,4 @@
-
+/*
 document.addEventListener('DOMContentLoaded', function() {
 	// Animar el menu de registro de jornada y produccion
 
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 	// Mostrar el formulario para registrar la jornada
-
+	/*
 	inputJornada.addEventListener("click", () => {
 		formularioInicial.classList.add("ocultar_formulario_usuario");
 		formularioInicial.classList.remove("usuario");
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	})
 	*/
 	// Condiciones para mostrar el boton de "Volver"
-
+	/*
 	botonAtras.addEventListener("click", () => {
 
 		document.getElementById("img_logo").style.display = "flex";
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	})
 })
-
+*/
 
 
 
