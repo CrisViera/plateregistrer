@@ -131,7 +131,7 @@
 	                // Envía los datos al servidor utilizando AJAX
 	                $.ajax({
 	                    type: "POST",
-	                    url: "./capas/registroJornada.php", // El archivo PHP que procesará el formulario
+	                    url: "http://localhost:800/views/registroJornada.php", // El archivo PHP que procesará el formulario
 	                    data: formData,
 	                    success: function (response) {
 	                        alert("Registro de jornada exitoso: " + response);
