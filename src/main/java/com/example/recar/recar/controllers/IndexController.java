@@ -1,8 +1,8 @@
 package com.example.recar.recar.controllers;
 
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+//import java.sql.ResultSet;
+//import java.util.ArrayList;
+//import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.example.recar.recar.models.CentrosdeTrabajo;
+//import com.example.recar.recar.models.CentrosdeTrabajo;
 import com.example.recar.recar.models.MySqlConnection;
 
 
@@ -30,6 +30,7 @@ public class IndexController {
         	// Elimina el atributo de sesión 'operacion'
         	session.setComplete();
         }
+        /* 
         // Crea una lista de centros de trabajo
         List<CentrosdeTrabajo> listadoDeCentros = new ArrayList<>();
 
@@ -56,6 +57,7 @@ public class IndexController {
         }
 
         model.addAttribute("centrosDeTrabajo", listadoDeCentros);
+        */
         model.addAttribute("titulo", "Recar");
         if(errorUsuario != null) {
         	model.addAttribute("errorUsuario");

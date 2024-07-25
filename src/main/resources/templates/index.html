@@ -130,16 +130,13 @@
 	
 	                // Envía los datos al servidor utilizando AJAX
 	                $.ajax({
-	                    type: "POST", // O GET según tu necesidad
+	                    type: "POST",
 	                    url: "./capas/registroJornada.php", // El archivo PHP que procesará el formulario
 	                    data: formData,
 	                    success: function (response) {
-	                        // Procesa la respuesta del servidor aquí
-	                        // Puedes mostrar un mensaje de éxito o realizar otras acciones necesarias
 	                        alert("Registro de jornada exitoso: " + response);
 	                    },
 	                    error: function (xhr, status, error) {
-	                        // Maneja los errores aquí
 	                        alert("Error en el registro: " + error);
 	                    }
 	                });
